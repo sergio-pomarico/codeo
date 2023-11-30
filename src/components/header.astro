@@ -1,5 +1,6 @@
 ---
 import Logo from "./logo.astro";
+import ThemeToggleButton from "./theme_toggle.jsx";
 
 interface Props {
   isPost?: boolean;
@@ -15,14 +16,17 @@ const { isPost = false } = Astro.props;
     <a href="#">
       <Logo />
     </a>
-    <a
-      id="menu-button"
-      class="cursor-pointer flex justify-center items-center h-8 w-8 z-11"
-    >
-      <span
-        class="block relative h-[3px] bg-gray-700 dark:bg-gray-100 w-[25px] after:absolute after:rounded after:w-full after:h-full after:-translate-y-[8px] after:bg-gray-700 dark:after:bg-gray-100 before:bg-gray-700 dark:before:bg-gray-100 before:absolute before:rounded before:w-full before:h-full before:translate-y-[8px]"
-      ></span>
-    </a>
+    <div class="flex flex-row">
+      <ThemeToggleButton client:load />
+      <a
+        id="menu-button"
+        class="cursor-pointer flex justify-center items-center h-8 w-8 z-11 ml-2"
+      >
+        <span
+          class="block relative h-[3px] bg-gray-700 dark:bg-gray-100 w-[25px] after:absolute after:rounded after:w-full after:h-full after:-translate-y-[8px] after:bg-gray-700 dark:after:bg-gray-100 before:bg-gray-700 dark:before:bg-gray-100 before:absolute before:rounded before:w-full before:h-full before:translate-y-[8px]"
+        ></span>
+      </a>
+    </div>
   </div>
   {
     isPost && (
