@@ -10,7 +10,9 @@ const { isPost = false } = Astro.props;
 ---
 
 <header
-  class="top-0 z-10 bg-white shadow-sm header h-20 dark:bg-zinc-900 transition-colors duration-500"
+  class={`${
+    isPost ? "h-[85px]" : "h-20"
+  } top-0 z-10 bg-white shadow-sm header dark:bg-zinc-900 transition-colors duration-500`}
 >
   <div class="container flex mx-auto p-6 justify-between items-center">
     <a href="#">
@@ -30,8 +32,11 @@ const { isPost = false } = Astro.props;
   </div>
   {
     isPost && (
-      <div class="progress">
-        <span class="progress__percentage" />
+      <div
+        id="progress"
+        class="h-[5px] w-full bg-slate-100 dark:bg-zinc-700 delay-300 transition-opacity ease-in z-[2]"
+      >
+        <span class="percentage bg-[#12bc84] w-0 block h-full" />
       </div>
     )
   }
