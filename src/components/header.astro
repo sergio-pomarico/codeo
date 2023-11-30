@@ -1,0 +1,119 @@
+---
+import Logo from "./logo.astro";
+
+interface Props {
+  isPost?: boolean;
+}
+
+const { isPost = false } = Astro.props;
+---
+
+<header class="top-0 z-10 bg-white shadow-sm header h-20">
+  <div class="container flex mx-auto p-6 justify-between items-center">
+    <a href="#">
+      <Logo />
+    </a>
+    <a
+      id="menu-button"
+      class="cursor-pointer flex justify-center items-center h-8 w-8 z-11"
+    >
+      <span
+        class="block relative h-[3px] bg-gray-700 w-[25px] after:absolute after:rounded after:w-full after:h-full after:-translate-y-[8px] after:bg-gray-700 before:bg-gray-700 before:absolute before:rounded before:w-full before:h-full before:translate-y-[8px]"
+      ></span>
+    </a>
+  </div>
+  {
+    isPost && (
+      <div class="progress">
+        <span class="progress__percentage" />
+      </div>
+    )
+  }
+</header>
+<section
+  aria-label="mobile"
+  id="menu"
+  class="fixed top-0 left-0 right-0 bottom-0 w-full h-full menu z-10 invisible"
+>
+  <div
+    class="flex flex-col items-center justify-center relative z-[12] w-full h-full"
+  >
+    <a class="cursor-pointer close absolute top-6 right-6 opacity-0" id="close">
+      <div
+        class="flex justify-center items-center hover:rotate-180 transition-[transform] ease-linear relative h-8 w-8"
+      >
+        <span class="h-0.5 bg-white w-8 rotate-45 block absolute"></span>
+        <span class="h-0.5 bg-white w-8 -rotate-45 block absolute"></span>
+      </div>
+    </a>
+    <nav role="navigation">
+      <ul class="navigation">
+        <li
+          class="font-montserrat font-bold tracking-widest text-4xl my-10 uppercase opacity-0 transition-opacity ease-in navigation-item"
+        >
+          <a
+            href=""
+            class="text-gray-400 hover:text-white hover:scale-105 ease-in transition-transform"
+            >Inicio</a
+          >
+        </li>
+        <li
+          class="font-montserrat font-bold tracking-widest text-4xl my-10 uppercase opacity-0 transition-opacity ease-in navigation-item"
+        >
+          <a
+            href=""
+            class="text-gray-400 hover:text-white hover:scale-105 ease-in transition-transform"
+            >Categorias</a
+          >
+        </li>
+        <li
+          class="font-montserrat font-bold tracking-widest text-4xl my-10 uppercase opacity-0 transition-opacity ease-in navigation-item"
+        >
+          <a
+            href=""
+            class="text-gray-400 hover:text-white hover:scale-105 ease-in transition-transform"
+            >Acerca de</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div
+    class="opacity-0 bg-black top-0 left-0 right-0 bottom-0 w-full h-full absolute z-[11] transition-[opacity] delay-500 ease-in overlay"
+  >
+  </div>
+</section>
+<style is:global>
+  .h-sticky {
+    position: sticky;
+    animation: 800ms ease-in-out 0s normal none 1 running slideInDown;
+  }
+  #close {
+    transition: opacity 400ms cubic-bezier(0.39, 0.575, 0.565, 1);
+    transition-delay: 700ms;
+  }
+  .active {
+    visibility: visible;
+  }
+  .active .overlay {
+    opacity: 0.9;
+  }
+  .active #close {
+    opacity: 1;
+  }
+  .item-active {
+    opacity: 1;
+  }
+
+  @keyframes slideInDown {
+    from {
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+      visibility: visible;
+    }
+    to {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+</style>
