@@ -8,7 +8,9 @@ interface Props {
 const { isPost = false } = Astro.props;
 ---
 
-<header class="top-0 z-10 bg-white shadow-sm header h-20">
+<header
+  class="top-0 z-10 bg-white shadow-sm header h-20 dark:bg-zinc-900 transition-colors duration-500"
+>
   <div class="container flex mx-auto p-6 justify-between items-center">
     <a href="#">
       <Logo />
@@ -18,7 +20,7 @@ const { isPost = false } = Astro.props;
       class="cursor-pointer flex justify-center items-center h-8 w-8 z-11"
     >
       <span
-        class="block relative h-[3px] bg-gray-700 w-[25px] after:absolute after:rounded after:w-full after:h-full after:-translate-y-[8px] after:bg-gray-700 before:bg-gray-700 before:absolute before:rounded before:w-full before:h-full before:translate-y-[8px]"
+        class="block relative h-[3px] bg-gray-700 dark:bg-gray-100 w-[25px] after:absolute after:rounded after:w-full after:h-full after:-translate-y-[8px] after:bg-gray-700 dark:after:bg-gray-100 before:bg-gray-700 dark:before:bg-gray-100 before:absolute before:rounded before:w-full before:h-full before:translate-y-[8px]"
       ></span>
     </a>
   </div>
@@ -63,7 +65,7 @@ const { isPost = false } = Astro.props;
           <a
             href=""
             class="text-gray-400 hover:text-white hover:scale-105 ease-in transition-transform"
-            >Categorias</a
+            >Acerca</a
           >
         </li>
         <li
@@ -72,7 +74,7 @@ const { isPost = false } = Astro.props;
           <a
             href=""
             class="text-gray-400 hover:text-white hover:scale-105 ease-in transition-transform"
-            >Acerca de</a
+            >Categorias</a
           >
         </li>
       </ul>
