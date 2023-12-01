@@ -1,110 +1,42 @@
 ---
+import { getCollection } from "astro:content";
 import Head from "../components/head.astro";
 import Body from "../components/body.astro";
 import Header from "../components/header.astro";
 import Footer from "../components/footer.astro";
 
 import { SITE_TITLE, SITE_DESCRIPTION } from "../constants";
+
+const posts = (await getCollection("blog"))
+  .filter((post) => {
+    return import.meta.env.PROD ? post.data.published : true;
+  })
+  .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
 ---
 
-<html lang="es" class="dark">
+<html lang="es">
   <head>
     <Head title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <Body>
     <Header />
     <main class="container mx-auto p-6">
-      <h1 class="font-montserrat text-3xl font-bold">Astro</h1>
-      <p class="font-esteban text-base mb-8">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed,
-        repellendus repellat doloremque non quaerat impedit vero veniam nesciunt
-        sequi pariatur quibusdam, reiciendis ex tempore sunt. Nisi nostrum odio
-        maiores nesciunt! Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Laudantium veritatis suscipit iusto beatae, ab nam aliquam eos
-        quam cupiditate inventore, cum earum unde repellat vitae facilis.
-        Exercitationem quasi repellat vero?
-      </p>
-      <p class="font-esteban text-base mb-8">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed,
-        repellendus repellat doloremque non quaerat impedit vero veniam nesciunt
-        sequi pariatur quibusdam, reiciendis ex tempore sunt. Nisi nostrum odio
-        maiores nesciunt! Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Laudantium veritatis suscipit iusto beatae, ab nam aliquam eos
-        quam cupiditate inventore, cum earum unde repellat vitae facilis.
-        Exercitationem quasi repellat vero?
-      </p>
-      <p class="font-esteban text-base mb-8">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed,
-        repellendus repellat doloremque non quaerat impedit vero veniam nesciunt
-        sequi pariatur quibusdam, reiciendis ex tempore sunt. Nisi nostrum odio
-        maiores nesciunt! Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Laudantium veritatis suscipit iusto beatae, ab nam aliquam eos
-        quam cupiditate inventore, cum earum unde repellat vitae facilis.
-        Exercitationem quasi repellat vero?
-      </p>
-      <p class="font-esteban text-base mb-8">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed,
-        repellendus repellat doloremque non quaerat impedit vero veniam nesciunt
-        sequi pariatur quibusdam, reiciendis ex tempore sunt. Nisi nostrum odio
-        maiores nesciunt! Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Laudantium veritatis suscipit iusto beatae, ab nam aliquam eos
-        quam cupiditate inventore, cum earum unde repellat vitae facilis.
-        Exercitationem quasi repellat vero?
-      </p>
-      <p class="font-esteban text-base mb-8">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed,
-        repellendus repellat doloremque non quaerat impedit vero veniam nesciunt
-        sequi pariatur quibusdam, reiciendis ex tempore sunt. Nisi nostrum odio
-        maiores nesciunt! Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Laudantium veritatis suscipit iusto beatae, ab nam aliquam eos
-        quam cupiditate inventore, cum earum unde repellat vitae facilis.
-        Exercitationem quasi repellat vero?
-      </p>
-      <p class="font-esteban text-base mb-8">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed,
-        repellendus repellat doloremque non quaerat impedit vero veniam nesciunt
-        sequi pariatur quibusdam, reiciendis ex tempore sunt. Nisi nostrum odio
-        maiores nesciunt! Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Laudantium veritatis suscipit iusto beatae, ab nam aliquam eos
-        quam cupiditate inventore, cum earum unde repellat vitae facilis.
-        Exercitationem quasi repellat vero?
-      </p>
-      <p class="font-esteban text-base mb-8">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed,
-        repellendus repellat doloremque non quaerat impedit vero veniam nesciunt
-        sequi pariatur quibusdam, reiciendis ex tempore sunt. Nisi nostrum odio
-        maiores nesciunt! Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Laudantium veritatis suscipit iusto beatae, ab nam aliquam eos
-        quam cupiditate inventore, cum earum unde repellat vitae facilis.
-        Exercitationem quasi repellat vero?
-      </p>
-      <p class="font-esteban text-base">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed,
-        repellendus repellat doloremque non quaerat impedit vero veniam nesciunt
-        sequi pariatur quibusdam, reiciendis ex tempore sunt. Nisi nostrum odio
-        maiores nesciunt! Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Laudantium veritatis suscipit iusto beatae, ab nam aliquam eos
-        quam cupiditate inventore, cum earum unde repellat vitae facilis.
-        Exercitationem quasi repellat vero?
-      </p>
-      <p class="font-esteban text-base mb-8">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed,
-        repellendus repellat doloremque non quaerat impedit vero veniam nesciunt
-        sequi pariatur quibusdam, reiciendis ex tempore sunt. Nisi nostrum odio
-        maiores nesciunt! Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Laudantium veritatis suscipit iusto beatae, ab nam aliquam eos
-        quam cupiditate inventore, cum earum unde repellat vitae facilis.
-        Exercitationem quasi repellat vero?
-      </p>
-      <p class="font-esteban text-base mb-8">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed,
-        repellendus repellat doloremque non quaerat impedit vero veniam nesciunt
-        sequi pariatur quibusdam, reiciendis ex tempore sunt. Nisi nostrum odio
-        maiores nesciunt! Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Laudantium veritatis suscipit iusto beatae, ab nam aliquam eos
-        quam cupiditate inventore, cum earum unde repellat vitae facilis.
-        Exercitationem quasi repellat vero?
-      </p>
+      {
+        posts.length !== 0 && (
+          <section class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 sm:gap-36 gap-16 my-20">
+            {posts.map((post) => {
+              return (
+                <a href={post.slug}>
+                  <div>
+                    <h3>{post.data.title}</h3>
+                    <p>{post.data.description}</p>
+                  </div>
+                </a>
+              );
+            })}
+          </section>
+        )
+      }
     </main>
     <Footer />
     <script src="../js/main.js"></script>
