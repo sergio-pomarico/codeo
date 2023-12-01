@@ -15,13 +15,13 @@ const { isPost = false } = Astro.props;
   } top-0 z-10 bg-white shadow-sm header dark:bg-zinc-900 transition-colors duration-500`}
 >
   <div class="container flex mx-auto p-6 justify-between items-center">
-    <a href="#">
+    <a href="/">
       <Logo />
     </a>
     <div class="flex flex-row">
       <ThemeToggleButton client:load />
       <a
-        id="menu-button"
+        id="open"
         class="cursor-pointer flex justify-center items-center h-8 w-8 z-11 ml-2"
       >
         <span
@@ -128,3 +128,68 @@ const { isPost = false } = Astro.props;
     }
   }
 </style>
+<script is:inline>
+  document.addEventListener("astro:page-load", () => {
+    //Elements
+    const header = document.querySelector(".header");
+    const open = document.getElementById("open");
+    const close = document.getElementById("close");
+    const menu = document.getElementById("menu");
+    const items = document.querySelectorAll(".navigation-item");
+    const progress = document.getElementById("progress");
+    const percentageBar = document.querySelector(".percentage");
+    let active = false;
+
+    //Functions
+    const toggleActive = () => {
+      active = !active;
+    };
+
+    const toggleMenu = () => {
+      toggleActive();
+      menu?.classList.toggle("active");
+      toggleItems();
+    };
+
+    const progressPercentage = () => {
+      if (progress) {
+        const docElement = document.documentElement;
+        const docBody = document.body;
+        const scrollTop = docElement.scrollTop || docBody.scrollTop;
+        const scrollBottom =
+          (docElement.scrollHeight || docBody.scrollHeight) -
+          window.innerHeight;
+        const percentage = (scrollTop / scrollBottom) * 100;
+        percentageBar.style.width = `${percentage}%`;
+      }
+    };
+
+    const toggleItems = () => {
+      const _items = active ? items : [...items].reverse();
+      _items.forEach((item, i) => {
+        setTimeout(
+          () => {
+            if (active) {
+              item.classList.add("item-active");
+            } else {
+              item.classList.remove("item-active");
+            }
+          },
+          800 + i * 120,
+        );
+      });
+    };
+
+    //Bindings
+    open.addEventListener("click", () => {
+      toggleMenu();
+    });
+    close.addEventListener("click", () => {
+      toggleMenu();
+    });
+    window?.addEventListener("scroll", (_) => {
+      header?.classList.toggle("h-sticky", window.scrollY > 150);
+      progressPercentage();
+    });
+  });
+</script>
