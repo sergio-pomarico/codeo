@@ -67,6 +67,6 @@ class App {
 
 const app = new App();
 
-document.addEventListener("astro:page-load", () => {
+document.addEventListener("DOMContentLoaded", () => {
   app.init();
 });
