@@ -1,0 +1,13 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+type Props = CollectionEntry<"blog">["data"];
+const { title, author, pubDate, heroImage, description, url } = Astro.props;
+---
+
+<a href={url}>
+  <div>
+    <h3>{title}</h3>
+    <p>{description}</p>
+  </div>
+</a>

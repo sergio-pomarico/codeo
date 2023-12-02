@@ -1,5 +1,6 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
 
 import Head from "../components/head.astro";
 import Body from "../components/body.astro";
@@ -30,6 +31,20 @@ const { Content } = await post.render();
   <Body>
     <Header isPost />
     <main class="container mx-auto p-6">
+      {
+        data.heroImage && (
+          <Image
+            src={data.heroImage}
+            alt={data.title}
+            width={1024}
+            height={510}
+            format="avif"
+            quality={90}
+            class="overflow-hidden object-cover object-center lg:my-8 lg:rounded-lg mx-auto shadow hover:shadow-2xl transition hover:ease-in"
+            style={`view-transition-name: ${post.slug}`}
+          />
+        )
+      }
       <Content />
     </main>
     <Footer />

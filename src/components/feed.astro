@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+import FeaturedPost from "./featured-post.astro";
+import Post from "./post.astro";
+
+const posts = (await getCollection("blog"))
+  .filter((post) => {
+    return import.meta.env.PROD ? post.data.published : true;
+  })
+  .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
+---
+
+<section class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-12 my-20">
+  {
+    posts.map((post, index) => {
+      if (index === 0) {
+        return <FeaturedPost url={post.slug} {...post.data} />;
+      } else {
+        return <Post url={post.slug} {...post.data} />;
+      }
+    })
+  }
+</section>

@@ -1,0 +1,44 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+type Props = CollectionEntry<"blog">["data"];
+const { title, author, pubDate, heroImage, description, url } = Astro.props;
+---
+
+<a href={url} class="col-start-1 col-end-3">
+  <article class="relative overflow-hidden min-h-[360px]">
+    {
+      heroImage && (
+        <Image
+          src={heroImage}
+          height={220}
+          width={420}
+          alt={title}
+          format="avif"
+          class="overflow-hidden object-cover object-center w-auto rounded-lg absolute top-0 left-0 right-0 bottom-0 -z-10 bg-no-repeat bg-cover bg-transparent bg-image"
+          style={`view-transition-name: ${url}`}
+        />
+      )
+    }
+    <div
+      class="z-10 w-full h-full p-4 sm:min-h-[360px] min-h-min flex flex-col items-center justify-center text-center opacity-100"
+    >
+      <h3 class="w-full font-montserrat font-bold text-3xl mb-4 text-white">
+        {title}
+      </h3>
+      <p class="w-full font-esteban text-l text-white">{description}</p>
+    </div>
+  </article>
+</a>
+<style>
+  .content::before {
+    background-image: linear-gradient(234deg, #2a2e35, black);
+    content: "";
+    display: flex;
+    height: 100%;
+    opacity: 0.4;
+    width: 100%;
+    position: absolute;
+    flex: 1;
+  }
+</style>

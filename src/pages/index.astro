@@ -1,9 +1,11 @@
 ---
 import { getCollection } from "astro:content";
-import Head from "../components/head.astro";
+
 import Body from "../components/body.astro";
+import Head from "../components/head.astro";
 import Header from "../components/header.astro";
 import Footer from "../components/footer.astro";
+import Feed from "../components/feed.astro";
 
 import { SITE_TITLE, SITE_DESCRIPTION } from "../constants";
 
@@ -21,22 +23,7 @@ const posts = (await getCollection("blog"))
   <Body>
     <Header />
     <main class="container mx-auto p-6">
-      {
-        posts.length !== 0 && (
-          <section class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 sm:gap-36 gap-16 my-20">
-            {posts.map((post) => {
-              return (
-                <a href={post.slug}>
-                  <div>
-                    <h3>{post.data.title}</h3>
-                    <p>{post.data.description}</p>
-                  </div>
-                </a>
-              );
-            })}
-          </section>
-        )
-      }
+      <Feed />
     </main>
     <Footer />
   </Body>
