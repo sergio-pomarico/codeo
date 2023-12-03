@@ -7,8 +7,6 @@ import Body from "../components/body.astro";
 import Header from "../components/header.astro";
 import Footer from "../components/footer.astro";
 
-import { SITE_TITLE, SITE_DESCRIPTION } from "../constants";
-
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
   return posts.map((post) => ({
@@ -26,7 +24,12 @@ const { Content } = await post.render();
 
 <html lang="es">
   <head>
-    <Head title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <Head
+      title={data.title}
+      description={data.description}
+      image={data.heroImage}
+      isPost
+    />
   </head>
   <Body>
     <Header isPost />

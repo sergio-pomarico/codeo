@@ -1,6 +1,4 @@
 ---
-import { getCollection } from "astro:content";
-
 import Body from "../components/body.astro";
 import Head from "../components/head.astro";
 import Header from "../components/header.astro";
@@ -8,12 +6,6 @@ import Footer from "../components/footer.astro";
 import Feed from "../components/feed.astro";
 
 import { SITE_TITLE, SITE_DESCRIPTION } from "../constants";
-
-const posts = (await getCollection("blog"))
-  .filter((post) => {
-    return import.meta.env.PROD ? post.data.published : true;
-  })
-  .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
 ---
 
 <html lang="es">
