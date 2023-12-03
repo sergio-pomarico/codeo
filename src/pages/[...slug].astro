@@ -20,6 +20,8 @@ type Props = CollectionEntry<"blog">;
 const post = Astro.props;
 const { data } = post;
 const { Content } = await post.render();
+
+import "../css/blog.css";
 ---
 
 <html lang="es">
@@ -48,7 +50,9 @@ const { Content } = await post.render();
           />
         )
       }
-      <Content />
+      <article class="post mx-auto">
+        <Content />
+      </article>
     </main>
     <Footer />
   </Body>

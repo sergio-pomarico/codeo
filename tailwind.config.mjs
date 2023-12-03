@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        esteban: ["Esteban", "Georgia", "Times New Roman", "serif"],
+        lato: ["Lato", "Helvetica", "Arial", "sans-serif"],
         montserrat: ["Montserrat", "Helvetica", "Arial", "sans-serif"],
       },
     },

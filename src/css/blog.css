@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.post {
+  width: 960px;
+  max-width: calc(100% - 2em);
+}
+
+.title1,
+.title2,
+.title3,
+.title4 {
+  @apply mb-4 font-bold font-montserrat;
+}
+
+.title1 {
+  @apply text-6xl;
+}
+
+.title2 {
+  @apply text-4xl;
+}
+
+.title3 {
+  @apply text-3xl font-semibold;
+}
+
+.title4 {
+  @apply text-xl font-semibold;
+}
+
+.paragraph {
+  @apply mb-4 font-lato text-base;
+}
+
+.photo {
+  @apply rounded-lg shadow-lg mb-4;
+}
+
+.blockquote {
+  @apply border-l-4 dark:border-gray-200 border-gray-600 mx-4 my-8 pl-8 italic text-xl font-light font-lato;
+}
+
+.table {
+  @apply w-3/4 my-6 mx-auto text-center font-lato;
+}
+
+.table-row {
+  @apply border-b-[0.5px] border-gray-200;
+}
+
+.ulist,
+.olist {
+  @apply pl-4 mb-4 font-lato;
+}
+
+.ulist {
+  @apply list-disc;
+}
+
+.olist {
+  @apply list-decimal;
+}
+
+.keyboard {
+  font-family: "monospace";
+}
+
+.paragraph mark {
+  @apply p-1;
+}
+
+.inline-code {
+  @apply dark:bg-gray-200 bg-gray-400 text-slate-50 dark:text-gray-600 p-1;
+}
+
+.astro-code {
+  @apply my-8 p-4 rounded-lg shadow-lg;
+}
+
+@media (max-width: 768px) {
+  .title1 {
+    @apply text-3xl font-extrabold;
+  }
+
+  .title2 {
+    @apply text-2xl;
+  }
+
+  .title3 {
+    @apply text-xl;
+  }
+
+  .title4 {
+    @apply text-lg;
+  }
+}
