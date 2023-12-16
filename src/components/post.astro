@@ -2,12 +2,34 @@
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 type Props = CollectionEntry<"blog">["data"];
-const { title, author, pubDate, heroImage, description, url } = Astro.props;
+
+import Date from "../components/date.astro";
+
+const { title, pubDate, heroImage, description, url } = Astro.props;
 ---
 
 <a href={url}>
-  <div>
-    <h3>{title}</h3>
-    <p>{description}</p>
-  </div>
+  <article class="min-h-[360px]">
+    {
+      heroImage && (
+        <Image
+          src={heroImage}
+          height={220}
+          width={420}
+          alt={title}
+          format="avif"
+          class="overflow-hidden object-cover object-center w-auto rounded-t-lg"
+          style={`view-transition-name: ${url}`}
+        />
+      )
+    }
+    <div class="bg-white dark:bg-zinc-700 p-4 rounded-b-lg">
+      <Date
+        date={pubDate}
+        classNames="block mb-4 font-lato font-light text-sm"
+      />
+      <h3 class="font-montserrat font-bold text-xl mb-4">{title}</h3>
+      <p class="font-lato font-light mb-2">{description}</p>
+    </div>
+  </article>
 </a>

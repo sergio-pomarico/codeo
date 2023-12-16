@@ -2,10 +2,12 @@
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 type Props = CollectionEntry<"blog">["data"];
-const { title, author, pubDate, heroImage, description, url } = Astro.props;
+const { title, pubDate, heroImage, description, url } = Astro.props;
+
+import Date from "../components/date.astro";
 ---
 
-<a href={url} class="col-start-1 col-end-3">
+<a href={url} class="col-start-1 lg:col-end-3 col-end-2">
   <article class="relative overflow-hidden min-h-[360px]">
     {
       heroImage && (
@@ -23,10 +25,14 @@ const { title, author, pubDate, heroImage, description, url } = Astro.props;
     <div
       class="z-10 w-full h-full p-4 sm:min-h-[360px] min-h-min flex flex-col items-center justify-center text-center opacity-100"
     >
+      <Date
+        date={pubDate}
+        classNames="block mb-4 font-lato font-light text-sm"
+      />
       <h3 class="w-full font-montserrat font-bold text-3xl mb-4 text-white">
         {title}
       </h3>
-      <p class="w-full font-esteban text-l text-white">{description}</p>
+      <p class="w-full font-lato text-l text-white">{description}</p>
     </div>
   </article>
 </a>
