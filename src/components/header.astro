@@ -103,9 +103,6 @@ const { isPost = false } = Astro.props;
     transition: opacity 400ms cubic-bezier(0.39, 0.575, 0.565, 1);
     transition-delay: 700ms;
   }
-  .active {
-    visibility: visible;
-  }
   .active .overlay {
     opacity: 0.9;
   }
@@ -113,7 +110,7 @@ const { isPost = false } = Astro.props;
     opacity: 1;
   }
   .item-active {
-    opacity: 1;
+    opacity: 1 !important;
   }
 
   @keyframes slideInDown {
@@ -147,6 +144,15 @@ const { isPost = false } = Astro.props;
 
     const toggleMenu = () => {
       toggleActive();
+      if (active) {
+        menu?.classList.remove("invisible");
+        menu?.classList.add("visible");
+      } else {
+        setTimeout(() => {
+          menu?.classList.remove("visible");
+          menu?.classList.add("invisible");
+        }, 1500);
+      }
       menu?.classList.toggle("active");
       toggleItems();
     };
@@ -175,7 +181,7 @@ const { isPost = false } = Astro.props;
               item.classList.remove("item-active");
             }
           },
-          800 + i * 120,
+          active ? 600 + i * 100 : i * 100,
         );
       });
     };
