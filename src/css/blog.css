@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.post {
-  width: 960px;
-  max-width: calc(100% - 2em);
-}
-
 .title1,
 .title2,
 .title3,

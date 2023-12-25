@@ -14,7 +14,9 @@ const { isPost = false } = Astro.props;
     isPost ? "h-[85px]" : "h-20"
   } top-0 z-10 bg-white shadow-sm header dark:bg-zinc-900 transition-colors duration-500`}
 >
-  <div class="container flex mx-auto p-6 justify-between items-center">
+  <div
+    class="container flex mx-auto p-6 justify-between items-center max-w-screen-xl"
+  >
     <a href="/">
       <Logo />
     </a>
@@ -47,7 +49,7 @@ const { isPost = false } = Astro.props;
   class="fixed top-0 left-0 right-0 bottom-0 w-full h-full menu z-10 invisible"
 >
   <div
-    class="flex flex-col items-center justify-center relative z-[12] w-full h-full"
+    class="flex flex-col items-center justify-center relative z-[12] w-full h-full container mx-auto max-w-screen-xl"
   >
     <a class="cursor-pointer close absolute top-6 right-6 opacity-0" id="close">
       <div

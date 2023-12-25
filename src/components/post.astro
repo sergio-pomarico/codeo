@@ -18,12 +18,12 @@ const { title, pubDate, heroImage, description, url } = Astro.props;
           width={420}
           alt={title}
           format="avif"
-          class="overflow-hidden object-cover object-center w-auto rounded-t-lg"
+          class="overflow-hidden object-cover object-center w-auto rounded-lg mb-4"
           style={`view-transition-name: ${url}`}
         />
       )
     }
-    <div class="bg-white dark:bg-zinc-700 p-4 rounded-b-lg">
+    <div class="p-4">
       <Date
         date={pubDate}
         classNames="block mb-4 font-lato font-light text-sm"

@@ -35,7 +35,7 @@ import "../css/blog.css";
   </head>
   <Body>
     <Header isPost />
-    <main class="container mx-auto p-6">
+    <main class="container mx-auto p-6 max-w-screen-lg">
       {
         data.heroImage && (
           <Image
@@ -50,7 +50,7 @@ import "../css/blog.css";
           />
         )
       }
-      <article class="post mx-auto">
+      <article>
         <Content />
       </article>
     </main>
