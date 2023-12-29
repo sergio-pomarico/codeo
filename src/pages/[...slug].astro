@@ -2,9 +2,11 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import { Image } from "astro:assets";
 
-import Head from "../components/head.astro";
 import Body from "../components/body.astro";
+import CalendarIcon from "../components/icons/calendar.astro";
+import Head from "../components/head.astro";
 import Header from "../components/header.astro";
+import Date from "../components/date.astro";
 import Footer from "../components/footer.astro";
 
 export async function getStaticPaths() {
@@ -35,22 +37,56 @@ import "../css/blog.css";
   </head>
   <Body>
     <Header isPost />
-    <main class="container mx-auto p-6 max-w-screen-lg">
-      {
-        data.heroImage && (
-          <Image
-            src={data.heroImage}
-            alt={data.title}
-            width={1024}
-            height={510}
-            format="avif"
-            quality={90}
-            class="overflow-hidden object-cover object-center lg:my-8 lg:rounded-lg mx-auto shadow hover:shadow-2xl transition hover:ease-in"
-            style={`view-transition-name: ${post.slug}`}
-          />
-        )
-      }
+    <main class="container mx-auto p-6 max-w-screen-lg my-6">
       <article>
+        <div class="rounded-lg block overflow-hidden mb-8">
+          {
+            data.heroImage && (
+              <figure class="w-auto h-auto object-cover object-center">
+                <Image
+                  src={data.heroImage}
+                  alt={data.title}
+                  format="avif"
+                  quality={90}
+                  width={1024}
+                  height={510}
+                  decoding="async"
+                  loading="lazy"
+                  class="transition duration-300 ease-in-out hover:scale-110"
+                  style={`view-transition-name: ${post.slug}`}
+                />
+              </figure>
+            )
+          }
+        </div>
+        <div class="md:col-10 text-center mb-12">
+          <h1
+            class="text-center font-bold font-montserrat text-3xl lg:text-5xl mb-8"
+          >
+            {data.title}
+          </h1>
+          <div class="flex flex-row justify-center items-center mb-10">
+            <div class="flex flex-row justify-center items-center mr-10">
+              <Image
+                src={"/profile.jpg"}
+                alt={data.author}
+                width={32}
+                height={32}
+                class="rounded-full mr-2"
+              />
+              <span class="font-lato font-light">
+                {data.author}
+              </span>
+            </div>
+            <div class="flex flex-row justify-center items-center mr-10">
+              <CalendarIcon />
+              <Date
+                date={data.pubDate}
+                classNames="block font-lato font-light"
+              />
+            </div>
+          </div>
+        </div>
         <Content />
       </article>
     </main>
