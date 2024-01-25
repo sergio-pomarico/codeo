@@ -8,28 +8,31 @@ import Date from "../components/date.astro";
 const { title, pubDate, heroImage, description, url } = Astro.props;
 ---
 
-<a href={url}>
-  <article class="min-h-[360px]">
-    {
-      heroImage && (
-        <Image
-          src={heroImage}
-          height={220}
-          width={420}
-          alt={title}
-          format="avif"
-          class="overflow-hidden object-cover object-center w-auto rounded-lg mb-4"
-          style={`view-transition-name: ${url}`}
-        />
-      )
-    }
-    <div class="p-4">
-      <Date
-        date={pubDate}
-        classNames="block mb-4 font-lato font-light text-sm"
-      />
+<article class="min-h-[360px]">
+  {
+    heroImage && (
+      <div class="mb-8">
+        <a href={url}>
+          <figure class="w-auto h-auto object-cover object-center">
+            <Image
+              src={heroImage}
+              height={220}
+              width={420}
+              alt={title}
+              format="avif"
+              class="rounded-lg"
+              style={`view-transition-name: ${url}`}
+            />
+          </figure>
+        </a>
+      </div>
+    )
+  }
+  <div class="p-4">
+    <Date date={pubDate} classNames="block mb-4 font-lato font-light text-sm" />
+    <a href={url}>
       <h3 class="font-montserrat font-bold text-xl mb-4">{title}</h3>
-      <p class="font-lato font-light mb-2">{description}</p>
-    </div>
-  </article>
-</a>
+    </a>
+    <p class="font-lato font-light mb-2">{description}</p>
+  </div>
+</article>

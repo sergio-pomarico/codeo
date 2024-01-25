@@ -39,7 +39,7 @@ import "../css/blog.css";
     <Header isPost />
     <main class="container mx-auto p-6 max-w-screen-lg my-6">
       <article>
-        <div class="rounded-lg block overflow-hidden mb-8">
+        <div class="mb-8">
           {
             data.heroImage && (
               <figure class="w-auto h-auto object-cover object-center">
@@ -52,7 +52,7 @@ import "../css/blog.css";
                   height={510}
                   decoding="async"
                   loading="lazy"
-                  class="transition duration-300 ease-in-out hover:scale-110"
+                  class="rounded-lg"
                   style={`view-transition-name: ${post.slug}`}
                 />
               </figure>
@@ -66,19 +66,23 @@ import "../css/blog.css";
             {data.title}
           </h1>
           <div class="flex flex-row justify-center items-center mb-10">
-            <div class="flex flex-row justify-center items-center mr-10">
-              <Image
-                src={"/profile.jpg"}
-                alt={data.author}
-                width={32}
-                height={32}
-                class="rounded-full mr-2"
-              />
+            <div
+              class="flex flex-row justify-center items-center sm:mr-10 mr-4"
+            >
+              <figure>
+                <Image
+                  src="https://assets.codeo.co/sergio-pomarico.jpg"
+                  alt={data.author}
+                  width={32}
+                  height={32}
+                  class="rounded-full mr-2"
+                />
+              </figure>
               <span class="font-lato font-light">
                 {data.author}
               </span>
             </div>
-            <div class="flex flex-row justify-center items-center mr-10">
+            <div class="flex flex-row justify-center items-center">
               <CalendarIcon />
               <Date
                 date={data.pubDate}

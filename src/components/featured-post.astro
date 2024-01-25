@@ -7,42 +7,38 @@ const { title, pubDate, heroImage, description, url } = Astro.props;
 import Date from "../components/date.astro";
 ---
 
-<a href={url} class="col-start-1 lg:col-end-4 sm:mb-12">
+<div class="col-start-1 lg:col-end-4 sm:mb-12">
   <article class="lg:flex-row flex-col flex justify-center items-center">
     {
       heroImage && (
-        <Image
-          src={heroImage}
-          height={420}
-          width={420}
-          alt={title}
-          format="avif"
-          class="w-auto md:w-[50%] rounded-lg bg-transparent bg-image"
-          style={`view-transition-name: ${url}`}
-        />
+        <div class="h-auto flex-1">
+          <a href={url}>
+            <figure class="w-auto h-auto object-cover object-center">
+              <Image
+                src={heroImage}
+                height={550}
+                width={1050}
+                alt={title}
+                format="avif"
+                class="rounded-lg"
+                style={`view-transition-name: ${url}`}
+              />
+            </figure>
+          </a>
+        </div>
       )
     }
-    <div class="md:p-0 md:pl-12 p-4">
+    <div class="md:p-0 md:pl-12 p-4 flex-1">
       <Date
         date={pubDate}
         classNames="block mb-4 font-lato font-light text-sm"
       />
-      <h3 class="w-full font-montserrat font-bold md:text-3xl text-xl mb-4">
-        {title}
-      </h3>
+      <a href={url}>
+        <h3 class="w-full font-montserrat font-bold md:text-3xl text-xl mb-4">
+          {title}
+        </h3>
+      </a>
       <p class="w-full font-lato font-light mb-2 text-lg">{description}</p>
     </div>
   </article>
-</a>
-<style>
-  .content::before {
-    background-image: linear-gradient(234deg, #2a2e35, black);
-    content: "";
-    display: flex;
-    height: 100%;
-    opacity: 0.4;
-    width: 100%;
-    position: absolute;
-    flex: 1;
-  }
-</style>
+</div>
