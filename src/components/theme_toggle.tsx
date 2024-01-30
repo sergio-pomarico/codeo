@@ -18,6 +18,9 @@ const ThemeToggleButton = () => {
   });
   const toggleTheme = () => {
     const t = theme === "light" ? "dark" : "light";
+    (
+      document.querySelector("meta[name='theme-color']") as HTMLMetaElement
+    ).content = t === "dark" ? "#18181b" : "#FFF";
     localStorage.setItem("theme", t);
     setTheme(t);
   };

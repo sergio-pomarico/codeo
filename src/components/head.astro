@@ -28,12 +28,7 @@ const { title, description, image, isPost = false } = Astro.props;
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta name="theme-color" content="#FFF" media="(prefers-color-scheme: light)" />
-<meta
-  name="theme-color"
-  content="#18181b"
-  media="(prefers-color-scheme: dark)"
-/>
+<meta name="theme-color" content="#FFF" />
 {image && <meta property="og:image" content={`${SITE_URL}${image}`} />}
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -55,8 +50,10 @@ const { title, description, image, isPost = false } = Astro.props;
   })();
   if (theme === "light") {
     document.documentElement.classList.remove("dark");
+    document.getElementsByTagName("meta")["theme-color"].content = "#FFF";
   } else {
     document.documentElement.classList.add("dark");
+    document.getElementsByTagName("meta")["theme-color"].content = "#18181b";
   }
   window.localStorage.setItem("theme", theme);
 </script>
