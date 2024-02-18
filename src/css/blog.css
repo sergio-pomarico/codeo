@@ -26,7 +26,7 @@
 }
 
 .paragraph {
-  @apply mb-4 font-lato text-base;
+  @apply font-lato font-light text-lg tracking-wide text-gray-600 dark:text-gray-400 mb-8;
 }
 
 .photo {
@@ -34,7 +34,7 @@
 }
 
 .blockquote {
-  @apply border-l-4 dark:border-gray-200 border-gray-600 mx-4 my-8 pl-8 italic text-xl font-light font-lato;
+  @apply border-l-4 dark:border-gray-400 border-gray-600 mx-4 my-8 pl-8 italic text-xl font-light font-lato;
 }
 
 .table {
@@ -51,11 +51,11 @@
 }
 
 .ulist {
-  @apply list-disc;
+  @apply list-disc dark:text-gray-400;
 }
 
 .olist {
-  @apply list-decimal;
+  @apply list-decimal dark:text-gray-400;
 }
 
 .keyboard {

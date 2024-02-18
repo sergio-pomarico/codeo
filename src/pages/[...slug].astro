@@ -37,9 +37,37 @@ import "../css/blog.css";
   </head>
   <Body>
     <Header isPost />
-    <main class="container mx-auto p-6 max-w-screen-lg my-6">
-      <article>
-        <div class="mb-8">
+    <main class="container mx-auto max-w-screen-lg my-6">
+      <article class="my-16">
+        <div class="flex items-center flex-row mb-8 px-6 sm:px-0">
+          <CalendarIcon />
+          <Date
+            date={data.pubDate}
+            classNames="block font-lato font-light text-sm sm:text-base"
+          />
+        </div>
+        <h1
+          class="font-bold font-montserrat text-3xl lg:text-5xl mb-8 px-6 sm:px-0"
+        >
+          {data.title}
+        </h1>
+        <div class="flex flex-row space-between items-center mb-4 px-6 sm:px-0">
+          <div class="flex flex-row justify-center items-center sm:mr-10 mr-4">
+            <figure>
+              <Image
+                src="https://assets.codeo.co/sergio-pomarico.jpg"
+                alt={data.author}
+                width={32}
+                height={32}
+                class="rounded-full mr-2"
+              />
+            </figure>
+            <span class="font-lato font-light">
+              {data.author}
+            </span>
+          </div>
+        </div>
+        <div class="mb-16">
           {
             data.heroImage && (
               <figure class="w-auto h-auto object-cover object-center">
@@ -52,46 +80,16 @@ import "../css/blog.css";
                   height={510}
                   decoding="async"
                   loading="lazy"
-                  class="rounded-lg"
+                  class="sm:rounded-3xl"
                   style={`view-transition-name: ${post.slug}`}
                 />
               </figure>
             )
           }
         </div>
-        <div class="md:col-10 text-center mb-12">
-          <h1
-            class="text-center font-bold font-montserrat text-3xl lg:text-5xl mb-8"
-          >
-            {data.title}
-          </h1>
-          <div class="flex flex-row justify-center items-center mb-10">
-            <div
-              class="flex flex-row justify-center items-center sm:mr-10 mr-4"
-            >
-              <figure>
-                <Image
-                  src="https://assets.codeo.co/sergio-pomarico.jpg"
-                  alt={data.author}
-                  width={32}
-                  height={32}
-                  class="rounded-full mr-2"
-                />
-              </figure>
-              <span class="font-lato font-light">
-                {data.author}
-              </span>
-            </div>
-            <div class="flex flex-row justify-center items-center">
-              <CalendarIcon />
-              <Date
-                date={data.pubDate}
-                classNames="block font-lato font-light"
-              />
-            </div>
-          </div>
+        <div class="max-w-[940px] mx-auto px-6">
+          <Content />
         </div>
-        <Content />
       </article>
     </main>
     <Footer />

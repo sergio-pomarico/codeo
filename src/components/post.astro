@@ -4,6 +4,7 @@ import type { CollectionEntry } from "astro:content";
 type Props = CollectionEntry<"blog">["data"];
 
 import Date from "../components/date.astro";
+import CalendarIcon from "../components/icons/calendar.astro";
 
 const { title, pubDate, heroImage, description, url } = Astro.props;
 ---
@@ -11,7 +12,7 @@ const { title, pubDate, heroImage, description, url } = Astro.props;
 <article class="min-h-[360px]">
   {
     heroImage && (
-      <div class="mb-8">
+      <div class="mb-6">
         <a href={url}>
           <figure class="w-auto h-auto object-cover object-center">
             <Image
@@ -20,7 +21,7 @@ const { title, pubDate, heroImage, description, url } = Astro.props;
               width={420}
               alt={title}
               format="avif"
-              class="rounded-lg"
+              class="rounded-2xl"
               style={`view-transition-name: ${url}`}
             />
           </figure>
@@ -28,8 +29,11 @@ const { title, pubDate, heroImage, description, url } = Astro.props;
       </div>
     )
   }
-  <div class="p-4">
-    <Date date={pubDate} classNames="block mb-4 font-lato font-light text-sm" />
+  <div>
+    <div class="flex items-center flex-row mb-6 px-6 sm:px-0">
+      <CalendarIcon />
+      <Date date={pubDate} classNames="block font-lato font-light text-sm" />
+    </div>
     <a href={url}>
       <h3 class="font-montserrat font-bold text-xl mb-4">{title}</h3>
     </a>

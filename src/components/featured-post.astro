@@ -5,13 +5,14 @@ type Props = CollectionEntry<"blog">["data"];
 const { title, pubDate, heroImage, description, url } = Astro.props;
 
 import Date from "../components/date.astro";
+import CalendarIcon from "../components/icons/calendar.astro";
 ---
 
 <div class="col-start-1 lg:col-end-4 sm:mb-12">
-  <article class="lg:flex-row flex-col flex justify-center items-center">
+  <article class="lg:flex-row flex-col flex justify-center items-center gap-8">
     {
       heroImage && (
-        <div class="h-auto flex-1">
+        <div class="h-auto flex-[2]">
           <a href={url}>
             <figure class="w-auto h-auto object-cover object-center">
               <Image
@@ -20,7 +21,7 @@ import Date from "../components/date.astro";
                 width={1050}
                 alt={title}
                 format="avif"
-                class="rounded-lg"
+                class="rounded-3xl"
                 style={`view-transition-name: ${url}`}
               />
             </figure>
@@ -28,11 +29,11 @@ import Date from "../components/date.astro";
         </div>
       )
     }
-    <div class="md:p-0 md:pl-12 p-4 flex-1">
-      <Date
-        date={pubDate}
-        classNames="block mb-4 font-lato font-light text-sm"
-      />
+    <div class="flex-[1]">
+      <div class="flex items-center flex-row mb-8 px-6 sm:px-0">
+        <CalendarIcon />
+        <Date date={pubDate} classNames="block font-lato font-light text-sm" />
+      </div>
       <a href={url}>
         <h3 class="w-full font-montserrat font-bold md:text-3xl text-xl mb-4">
           {title}
