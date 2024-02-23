@@ -2,10 +2,11 @@
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 type Props = CollectionEntry<"blog">["data"];
-const { title, pubDate, heroImage, description, url } = Astro.props;
+const { title, pubDate, heroImage, description, url, category } = Astro.props;
 
 import Date from "../components/date.astro";
 import CalendarIcon from "../components/icons/calendar.astro";
+import Tag from "../components/tag.astro";
 ---
 
 <div class="col-start-1 lg:col-end-4 sm:mb-12">
@@ -31,8 +32,14 @@ import CalendarIcon from "../components/icons/calendar.astro";
     }
     <div class="flex-[1]">
       <div class="flex items-center flex-row mb-8 px-6 sm:px-0">
-        <CalendarIcon />
-        <Date date={pubDate} classNames="block font-lato font-light text-sm" />
+        <Tag category={category!} route={`/category/${category}`} />
+        <div class="flex items-center flex-row px-6 sm:px-0">
+          <CalendarIcon />
+          <Date
+            date={pubDate}
+            classNames="block font-lato font-light text-sm"
+          />
+        </div>
       </div>
       <a href={url}>
         <h3 class="w-full font-montserrat font-bold md:text-3xl text-xl mb-4">

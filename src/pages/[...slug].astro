@@ -8,6 +8,7 @@ import Head from "../components/head.astro";
 import Header from "../components/header.astro";
 import Date from "../components/date.astro";
 import Footer from "../components/footer.astro";
+import Tag from "../components/tag.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -24,6 +25,7 @@ const { data } = post;
 const { Content } = await post.render();
 
 import "../css/blog.css";
+import { date } from "astro/zod";
 ---
 
 <html lang="es">
@@ -39,19 +41,22 @@ import "../css/blog.css";
     <Header isPost />
     <main class="container mx-auto max-w-screen-lg my-6">
       <article class="my-16">
-        <div class="flex items-center flex-row mb-8 px-6 sm:px-0">
-          <CalendarIcon />
-          <Date
-            date={data.pubDate}
-            classNames="block font-lato font-light text-sm sm:text-base"
-          />
+        <div class="flex items-center flex-row mb-8 lg:px-0 px-6">
+          <Tag category={data.category!} route={`/category/${data.category}`} />
+          <div class="flex items-center flex-row">
+            <CalendarIcon />
+            <Date
+              date={data.pubDate}
+              classNames="block font-lato font-light text-sm sm:text-base"
+            />
+          </div>
         </div>
         <h1
-          class="font-bold font-montserrat text-3xl lg:text-5xl mb-8 px-6 sm:px-0"
+          class="font-bold font-montserrat text-3xl lg:text-5xl mb-8 lg:px-0 px-6"
         >
           {data.title}
         </h1>
-        <div class="flex flex-row space-between items-center mb-4 px-6 sm:px-0">
+        <div class="flex flex-row space-between items-center mb-4 lg:px-0 px-6">
           <div class="flex flex-row justify-center items-center sm:mr-10 mr-4">
             <figure>
               <Image
@@ -80,14 +85,14 @@ import "../css/blog.css";
                   height={510}
                   decoding="async"
                   loading="lazy"
-                  class="sm:rounded-3xl"
+                  class="md:rounded-3xl"
                   style={`view-transition-name: ${post.slug}`}
                 />
               </figure>
             )
           }
         </div>
-        <div class="max-w-[940px] mx-auto px-6">
+        <div class="max-w-[856px] mx-auto lg:px-0 px-6">
           <Content />
         </div>
       </article>

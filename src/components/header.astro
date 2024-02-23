@@ -1,7 +1,6 @@
 ---
 import Logo from "./logo.astro";
 import ThemeToggleButton from "./theme-toggle.jsx";
-import MenuButton from "./menu-button.jsx";
 
 interface Props {
   isPost?: boolean;
@@ -23,7 +22,23 @@ const { isPost = false } = Astro.props;
     </a>
     <div class="flex flex-row">
       <ThemeToggleButton client:load />
-      <MenuButton client:load />
+      <a
+        id="menu-open"
+        class="cursor-pointer flex justify-center items-center h-8 w-8 z-10 ml-2 relative"
+      >
+        <span
+          aria-hidden="true"
+          class="block h-0.5 bg-gray-700 dark:bg-gray-100 w-[25px] absolute top-1/2 left-1/2 -translate-x-1/2 transform transition ease-in-out duration-500 delay-400 -translate-y-[10px]"
+        ></span>
+        <span
+          aria-hidden="true"
+          class="block h-0.5 w-[25px] bg-gray-700 dark:bg-gray-100 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform transition ease-in-out duration-500 delay-400"
+        ></span>
+        <span
+          aria-hidden="true"
+          class="block h-0.5 bg-gray-700 dark:bg-gray-100 w-[25px] absolute top-1/2 left-1/2 -translate-x-1/2 transform transition ease-in-out duration-500 delay-400 translate-y-[9px]"
+        ></span>
+      </a>
     </div>
   </div>
   {
@@ -45,6 +60,15 @@ const { isPost = false } = Astro.props;
   <div
     class="flex flex-col items-center justify-center relative z-[11] w-full h-full container mx-auto max-w-screen-xl"
   >
+    <a
+      class="cursor-pointer close absolute top-6 right-6 opacity-0"
+      id="menu-close"
+    >
+      <div class="flex justify-center items-center relative h-8 w-8">
+        <span class="h-0.5 bg-white w-[25px] rotate-45 block absolute"></span>
+        <span class="h-0.5 bg-white w-[25px] -rotate-45 block absolute"></span>
+      </div>
+    </a>
     <nav role="navigation">
       <ul class="navigation z-[12]">
         <li
@@ -60,7 +84,7 @@ const { isPost = false } = Astro.props;
           class="font-montserrat font-bold tracking-widest text-4xl my-10 uppercase opacity-0 transition-opacity ease-in navigation-item text-center"
         >
           <a
-            href=""
+            href="/about"
             class="text-gray-400 hover:text-white hover:scale-105 ease-in transition-transform"
             >Acerca</a
           >
@@ -69,7 +93,7 @@ const { isPost = false } = Astro.props;
           class="font-montserrat font-bold tracking-widest text-4xl my-10 uppercase opacity-0 transition-opacity ease-in navigation-item text-center"
         >
           <a
-            href=""
+            href="/categorias"
             class="text-gray-400 hover:text-white hover:scale-105 ease-in transition-transform"
             >Categorias</a
           >
@@ -87,14 +111,14 @@ const { isPost = false } = Astro.props;
     position: sticky;
     animation: 800ms ease-in-out 0s normal none 1 running slideInDown;
   }
-  #close {
+  #menu-close {
     transition: opacity 400ms cubic-bezier(0.39, 0.575, 0.565, 1);
     transition-delay: 700ms;
   }
   .active .overlay {
     opacity: 0.9;
   }
-  .active #close {
+  .active #menu-close {
     opacity: 1;
   }
   .item-active {
@@ -117,7 +141,8 @@ const { isPost = false } = Astro.props;
   document.addEventListener("astro:page-load", () => {
     //Elements
     const header = document.querySelector(".header");
-    const button = document.getElementById("menu-button");
+    const menuOpen = document.getElementById("menu-open");
+    const menuClose = document.getElementById("menu-close");
     const menu = document.getElementById("menu");
     const items = document.querySelectorAll(".navigation-item");
     const progress = document.getElementById("progress");
@@ -174,7 +199,10 @@ const { isPost = false } = Astro.props;
     };
 
     //Bindings
-    button.addEventListener("click", () => {
+    menuOpen.addEventListener("click", () => {
+      toggleMenu();
+    });
+    menuClose.addEventListener("click", () => {
       toggleMenu();
     });
     window?.addEventListener("scroll", (_) => {
