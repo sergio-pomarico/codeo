@@ -1,5 +1,13 @@
 <body
-  class="bg-slate-50 dark:bg-zinc-800 text-gray-600 dark:text-gray-200 transition-colors leading-6 break-words duration-500"
+  class="bg-slate-50 dark:bg-zinc-800 text-gray-600 dark:text-gray-200 transition-colors leading-6 break-words duration-500 body"
 >
   <slot />
 </body>
+
+<style>
+  .body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100dvh;
+  }
+</style>
