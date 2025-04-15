@@ -13,12 +13,12 @@ const featured = posts.find((post) => post.data.featured);
 ---
 
 <section class="flex flex-col items-start feed box-content">
-  <FeaturedPost url={featured!.slug} {...featured!.data} />
+  <FeaturedPost url={featured?.slug} {...featured!.data} />
   <section class="grid md:grid-cols-3 grid-cols-1 gap-8 my-10 px-6">
     {
       posts.map((post) => {
         if (!post.data.featured) {
-          return <Post url={post.slug} {...post.data} />;
+          return <Post url={post?.slug} {...post.data} />;
         }
       })
     }
