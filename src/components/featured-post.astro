@@ -9,28 +9,28 @@ import CalendarIcon from "../components/icons/calendar.astro";
 import Tag from "../components/tag.astro";
 ---
 
-<div class="col-start-1 lg:col-end-4 sm:mb-12">
-  <article class="lg:flex-row flex-col flex justify-center items-center gap-8">
+<article class="grid gap-16 grid-cols-1 p-6">
+  <div
+    class="w-full flex flex-col items-center gap-8 relative h-full overflow-hidden md:flex-row"
+  >
     {
       heroImage && (
-        <div class="h-auto flex-[2]">
-          <a href={url}>
-            <figure class="w-auto h-auto object-cover object-center">
-              <Image
-                src={heroImage}
-                height={550}
-                width={1050}
-                alt={title}
-                format="avif"
-                class="rounded-3xl"
-                style={`view-transition-name: ${url}`}
-              />
-            </figure>
-          </a>
-        </div>
+        <a
+          href={url}
+          class="rounded-2xl md:h-[424px] flex items-center justify-center lg:w-[820px] md:w-full md:items-start lg:max-w-[initial] lg:min-w-[initial] md:max-w-[50%] md:min-w-[50%] overflow-hidden h-[240px] min-w-full w-full"
+        >
+          <Image
+            src={heroImage}
+            height={424}
+            width={820}
+            alt={title}
+            format="avif"
+            class="h-full w-auto max-w-[unset] rounded-2xl aspect-[205/106]"
+          />
+        </a>
       )
     }
-    <div class="flex-[1]">
+    <div class="flex flex-col w-full md:w-[50%] lg:w-[528]">
       <div class="flex items-center flex-row mb-8 px-6 sm:px-0">
         <Tag category={category!} route={`/category/${category}`} />
         <div class="flex items-center flex-row px-6 sm:px-0">
@@ -48,5 +48,5 @@ import Tag from "../components/tag.astro";
       </a>
       <p class="w-full font-lato font-light mb-2 text-lg">{description}</p>
     </div>
-  </article>
-</div>
+  </div>
+</article>
