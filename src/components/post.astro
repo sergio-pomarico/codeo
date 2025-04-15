@@ -10,27 +10,30 @@ import Tag from "../components/tag.astro";
 const { title, pubDate, heroImage, description, url, category } = Astro.props;
 ---
 
-<article class="min-h-[360px] md:flex-col flex-row">
+<article
+  class="flex lg:flex-col md:flex-row flex-grow md:gap-8 lg:gap-0 gap-0 flex-col"
+>
   {
     heroImage && (
-      <div class="mb-6">
-        <a href={url}>
-          <figure class="w-auto h-auto object-cover object-center">
-            <Image
-              src={heroImage}
-              height={220}
-              width={420}
-              alt={title}
-              format="avif"
-              class="rounded-2xl transform transition-transform hover:-translate-y-1 duration-300 ease-in-out"
-              style={`view-transition-name: ${url}`}
-            />
-          </figure>
-        </a>
-      </div>
+      <a
+        href={url}
+        class="flex items-center justify-center w-full lg:max-w-full lg:min-w-full overflow-hidden rounded-2xl md:max-w-[50%] md:min-w-[50%] min-w-full max-w-full"
+      >
+        <Image
+          src={heroImage}
+          height={220}
+          width={420}
+          alt={title}
+          format="avif"
+          class="h-auto w-auto max-w-full rounded-2xl"
+          style={`view-transition-name: ${url}`}
+        />
+      </a>
     )
   }
-  <div>
+  <div
+    class="flex flex-col mt-8 mb:mt-0 lg:mt-8 justify-center lg:justify-start"
+  >
     <div class="flex items-center flex-row mb-8 px-6 sm:px-0">
       <Tag category={category!} route={`/category/${category}`} />
       <div class="flex items-center flex-row px-6 sm:px-0">
