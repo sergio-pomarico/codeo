@@ -3,9 +3,10 @@ title: "Markdown Style Guide"
 description: "Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro."
 pubDate: "Jul 01 2022"
 author: "Sergio Pomárico"
-heroImage: "/placeholder.jpg"
+heroImage: "https://blog.stackblitz.com/posts/announcing-tutorialkit/hero.jpg"
 published: true
 category: backend
+featured: true
 ---
 
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.

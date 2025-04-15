@@ -6,6 +6,7 @@ author: "Sergio Pomárico"
 heroImage: "/placeholder.jpg"
 published: true
 category: programing
+featured: false
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sem massa, ultrices id sem id, convallis vulputate odio. Proin sit amet ex sem. Nam vestibulum sem magna. Etiam nec tellus ante. Cras eu ante viverra, porttitor lectus semper, ultricies urna. Phasellus tristique justo laoreet mauris faucibus mollis. Sed finibus interdum magna, ut tincidunt erat feugiat sit amet. Quisque finibus lacus sit amet eros gravida maximus.
