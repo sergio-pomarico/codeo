@@ -18,7 +18,7 @@ const featured = posts.find((post) => post.data.featured);
     {
       posts.map((post) => {
         if (!post.data.featured) {
-          return <Post url={post?.slug} {...post.data} />;
+          return <Post url={post?.slug} {...post?.data} />;
         }
       })
     }
