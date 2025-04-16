@@ -17,7 +17,7 @@ import Tag from "../components/tag.astro";
       heroImage && (
         <a
           href={url}
-          class="rounded-2xl md:h-[424px] flex items-center justify-center lg:w-[820px] md:w-full md:items-start lg:max-w-[initial] lg:min-w-[initial] md:max-w-[50%] md:min-w-[50%] overflow-hidden h-[240px] c"
+          class="rounded-2xl md:h-[424px] flex items-center justify-center lg:w-[820px] md:w-full md:items-start lg:max-w-[initial] lg:min-w-[initial] md:max-w-[50%] md:min-w-[50%] overflow-hidden h-[240px] sm:max-w-full sm:min-w-full"
         >
           <Image
             src={heroImage}
@@ -25,13 +25,13 @@ import Tag from "../components/tag.astro";
             width={820}
             alt={title}
             format="avif"
-            class="h-full w-auto max-w-[unset] rounded-2xl aspect-[205/106]"
+            class="sm:h-full sm:w-auto max-w-[unset] rounded-2xl aspect-[205/106] w-full h-auto"
           />
         </a>
       )
     }
     <div class="flex flex-col w-full md:w-[50%] lg:w-[528]">
-      <div class="flex items-center flex-row mb-8 px-6 sm:px-0">
+      <div class="flex items-center flex-row mb-8 px-0">
         <Tag category={category!} route={`/category/${category}`} />
         <div class="flex items-center flex-row px-6 sm:px-0">
           <CalendarIcon />
