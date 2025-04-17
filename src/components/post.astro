@@ -25,6 +25,9 @@ const { title, pubDate, heroImage, description, url, category } = Astro.props;
           width={420}
           alt={title}
           format="avif"
+          fit="cover"
+          loading="lazy"
+          quality={80}
           class="h-auto w-auto max-w-full rounded-2xl"
           style={`view-transition-name: ${url}`}
         />
