@@ -66,8 +66,10 @@
   @apply p-1;
 }
 
-.inline-code {
-  @apply dark:bg-gray-200 bg-gray-400 text-slate-50 dark:text-gray-600 p-1;
+.paragraph {
+  .inline-code {
+    @apply dark:bg-gray-200 bg-gray-400 text-slate-50 dark:text-gray-600 p-1;
+  }
 }
 
 .astro-code {
