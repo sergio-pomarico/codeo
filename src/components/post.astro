@@ -7,6 +7,8 @@ import Date from "../components/date.astro";
 import CalendarIcon from "../components/icons/calendar.astro";
 import Tag from "../components/tag.astro";
 
+import { slugify } from "../utils/slug";
+
 const { title, pubDate, heroImage, description, url, category } = Astro.props;
 ---
 
@@ -38,7 +40,11 @@ const { title, pubDate, heroImage, description, url, category } = Astro.props;
     class="flex flex-col mt-8 mb:mt-0 lg:mt-8 justify-center lg:justify-start"
   >
     <div class="flex items-center flex-row mb-8 px-0">
-      <Tag category={category!} route={`/category/${category}`} />
+      {
+        category && (
+          <Tag category={category!} route={`/category/${slugify(category)}`} />
+        )
+      }
       <div class="flex items-center flex-row px-6 sm:px-0">
         <CalendarIcon />
         <Date date={pubDate} classNames="block font-lato font-light text-sm" />
