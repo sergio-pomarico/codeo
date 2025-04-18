@@ -53,14 +53,14 @@ const ThemeToggleButton = () => {
         width="2rem"
         height="2rem"
         fill="currentColor"
-        stroke-linecap="round"
+        strokeLinecap="round"
         className="theme-toggle__classic"
         viewBox="0 0 32 32"
       >
         <clipPath id="theme-toggle__classic__cutout">
           <path d="M0-5h30a1 1 0 0 0 9 13v24H0Z" />
         </clipPath>
-        <g clip-path="url(#theme-toggle__classic__cutout)">
+        <g clipPath="url(#theme-toggle__classic__cutout)">
           <circle cx="16" cy="16" r="9.34" />
           <g stroke="currentColor" strokeWidth="1.5">
             <path d="M16 5.5v-4" />
