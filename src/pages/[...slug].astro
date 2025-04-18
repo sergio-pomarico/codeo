@@ -10,6 +10,8 @@ import Date from "../components/date.astro";
 import Footer from "../components/footer.astro";
 import Tag from "../components/tag.astro";
 
+import { slugify } from "../utils/slug";
+
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
   return posts.map((post) => ({
@@ -41,7 +43,14 @@ import "../css/blog.css";
     <main class="container mx-auto max-w-screen-lg my-6">
       <article class="md:my-16 sx:my-8">
         <div class="flex items-center flex-row mb-8 lg:px-0 px-6">
-          <Tag category={data.category!} route={`/category/${data.category}`} />
+          {
+            data.categories.map((category) => (
+              <Tag
+                category={category!}
+                route={`/category/${slugify(category)}`}
+              />
+            ))
+          }
           <div class="flex items-center flex-row ml-4">
             <CalendarIcon />
             <Date

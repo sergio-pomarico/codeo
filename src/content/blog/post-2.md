@@ -5,7 +5,7 @@ pubDate: "Sept 01 2023"
 author: "Sergio Pomárico"
 heroImage: "/placeholder.jpg"
 published: true
-category: frontend
+categories: ["frontend"]
 featured: false
 ---
 

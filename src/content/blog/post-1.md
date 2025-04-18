@@ -5,7 +5,7 @@ pubDate: "Oct 01 2023"
 author: "Sergio Pomárico"
 heroImage: "/placeholder.jpg"
 published: true
-category: programing
+categories: ["programing"]
 featured: false
 ---
 

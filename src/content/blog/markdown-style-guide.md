@@ -5,7 +5,7 @@ pubDate: "Jul 01 2022"
 author: "Sergio Pomárico"
 heroImage: "https://blog.stackblitz.com/posts/announcing-tutorialkit/hero.jpg"
 published: true
-category: backend
+categories: ["backend"]
 featured: true
 ---
 
