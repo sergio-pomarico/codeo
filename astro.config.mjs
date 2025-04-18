@@ -8,8 +8,10 @@ export default defineConfig({
   integrations: [tailwind(), react()],
   site: "https://www.codeo.co/",
   markdown: {
+    syntaxHighlight: "shiki",
     shikiConfig: {
       theme: "material-theme-palenight",
+      wrap: true,
     },
     rehypePlugins: [
       [
@@ -27,7 +29,7 @@ export default defineConfig({
           table: "table",
           tr: "table-row",
           kbd: "keyboard",
-          code: "inline-code",
+          code: "code",
         },
       ],
     ],
