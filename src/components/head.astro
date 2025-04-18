@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import { SITE_URL } from "../constants";
 
 interface Props {
@@ -37,7 +37,7 @@ const { title, description, image, isPost = false } = Astro.props;
   href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Montserrat:wght@400;600;700;800&display=swap"
   rel="stylesheet"
 />
-<ViewTransitions />
+<ClientRouter />
 <script is:inline>
   const theme = (() => {
     if (typeof localStorage !== undefined && localStorage.getItem("theme")) {
