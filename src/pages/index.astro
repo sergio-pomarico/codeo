@@ -6,6 +6,7 @@ import Footer from "../components/footer.astro";
 import Feed from "../components/feed.astro";
 
 import { SITE_TITLE, SITE_DESCRIPTION } from "../constants";
+import Button from "../components/button.astro";
 ---
 
 <html lang="es">
@@ -16,6 +17,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../constants";
     <Header />
     <main class="container mx-auto max-w-screen-xl">
       <Feed />
+      <div class="my-8 flex justify-center items-center w-full">
+        <Button variant="outline" size="sm" href="/blog">Ver todos →</Button>
+      </div>
     </main>
     <Footer />
   </Body>

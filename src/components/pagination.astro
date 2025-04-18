@@ -1,0 +1,25 @@
+---
+import Button from "./button.astro";
+
+const { prevUrl, nextUrl } = Astro.props;
+---
+
+<nav
+  class="my-8 flex justify-center items-center max-w-xs px-6 mx-auto"
+  aria-label="Paginación"
+>
+  {
+    prevUrl && (
+      <Button variant="outline" size="sm" href={prevUrl} spacing="sm">
+        Anterior
+      </Button>
+    )
+  }
+  {
+    nextUrl && (
+      <Button variant="outline" size="sm" href={nextUrl} spacing="sm">
+        Siguiente
+      </Button>
+    )
+  }
+</nav>
