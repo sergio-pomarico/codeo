@@ -45,7 +45,7 @@ const { title, pubDate, heroImage, description, url, category } = Astro.props;
           <Tag category={category!} route={`/category/${slugify(category)}`} />
         )
       }
-      <div class="flex items-center flex-row px-6 sm:px-0">
+      <div class="flex items-center flex-row ml-4">
         <CalendarIcon />
         <Date date={pubDate} classNames="block font-lato font-light text-sm" />
       </div>
