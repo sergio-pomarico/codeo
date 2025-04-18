@@ -2,15 +2,15 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import { Image } from "astro:assets";
 
-import Body from "../components/body.astro";
-import CalendarIcon from "../components/icons/calendar.astro";
-import Head from "../components/head.astro";
-import Header from "../components/header.astro";
-import Date from "../components/date.astro";
-import Footer from "../components/footer.astro";
-import Tag from "../components/tag.astro";
+import Body from "../../components/body.astro";
+import CalendarIcon from "../../components/icons/calendar.astro";
+import Head from "../../components/head.astro";
+import Header from "../../components/header.astro";
+import Date from "../../components/date.astro";
+import Footer from "../../components/footer.astro";
+import Tag from "../../components/tag.astro";
 
-import { slugify } from "../utils/slug";
+import { slugify } from "../../utils/slug";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -26,7 +26,7 @@ const post = Astro.props;
 const { data } = post;
 const { Content } = await post.render();
 
-import "../css/blog.css";
+import "../../css/blog.css";
 ---
 
 <html lang="es">
@@ -47,7 +47,7 @@ import "../css/blog.css";
             data.categories.map((category) => (
               <Tag
                 category={category!}
-                route={`/category/${slugify(category)}`}
+                route={`/categories/${slugify(category)}`}
               />
             ))
           }

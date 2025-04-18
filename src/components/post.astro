@@ -10,7 +10,6 @@ import Tag from "../components/tag.astro";
 import { slugify } from "../utils/slug";
 
 const { title, pubDate, heroImage, description, url, categories } = Astro.props;
-console.log(categories);
 ---
 
 <article
@@ -19,7 +18,7 @@ console.log(categories);
   {
     heroImage && (
       <a
-        href={url}
+        href={`/blog/${url}`}
         class="flex items-center justify-center w-full lg:max-w-full lg:min-w-full overflow-hidden rounded-2xl md:max-w-[50%] md:min-w-[50%] min-w-full max-w-full"
       >
         <Image
@@ -43,7 +42,10 @@ console.log(categories);
     <div class="flex items-center flex-row mb-8 px-0">
       {
         categories.map((category) => (
-          <Tag category={category!} route={`/category/${slugify(category)}`} />
+          <Tag
+            category={category!}
+            route={`/categories/${slugify(category)}`}
+          />
         ))
       }
       <div class="flex items-center flex-row ml-4">
@@ -51,7 +53,7 @@ console.log(categories);
         <Date date={pubDate} classNames="block font-lato font-light text-sm" />
       </div>
     </div>
-    <a href={url}>
+    <a href={`/blog/${url}`}>
       <h3 class="font-montserrat font-bold text-xl mb-4">{title}</h3>
     </a>
     <p class="font-lato font-light mb-2">{description}</p>

@@ -18,7 +18,7 @@ import { slugify } from "../utils/slug";
     {
       heroImage && (
         <a
-          href={url}
+          href={`/blog/${url}`}
           class="rounded-2xl md:h-[424px] flex items-center justify-center lg:w-[820px] md:w-full md:items-start lg:max-w-[initial] lg:min-w-[initial] md:max-w-[50%] md:min-w-[50%] overflow-hidden h-[240px] sm:max-w-full sm:min-w-full"
         >
           <Image
@@ -41,7 +41,7 @@ import { slugify } from "../utils/slug";
           categories.map((category) => (
             <Tag
               category={category!}
-              route={`/category/${slugify(category)}`}
+              route={`/categories/${slugify(category)}`}
             />
           ))
         }
@@ -53,7 +53,7 @@ import { slugify } from "../utils/slug";
           />
         </div>
       </div>
-      <a href={url}>
+      <a href={`/blog/${url}`}>
         <h3 class="w-full font-montserrat font-bold md:text-3xl text-xl mb-4">
           {title}
         </h3>

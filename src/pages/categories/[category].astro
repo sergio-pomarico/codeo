@@ -1,0 +1,49 @@
+---
+import { getCollection } from "astro:content";
+
+import Body from "../../components/body.astro";
+import Head from "../../components/head.astro";
+import Header from "../../components/header.astro";
+import Footer from "../../components/footer.astro";
+import Post from "../../components/post.astro";
+
+import { getTaxonomy, taxonomyFilter } from "../../utils/taxonomy";
+import { filteredBlogPosts } from "../../utils/filter";
+
+export async function getStaticPaths() {
+  const categories = await getTaxonomy("categories");
+  return categories.map((category) => {
+    return {
+      params: { category: category.slug },
+    };
+  });
+}
+
+const { category } = Astro.params;
+const posts = await getCollection("blog");
+const filteredPost = await filteredBlogPosts(posts, {
+  filterOutDrafts: import.meta.env.PROD,
+  filterOutFuturePosts: false,
+});
+const filterByCategory = taxonomyFilter(filteredPost, "categories", category);
+console.log(filterByCategory, category);
+---
+
+<html lang="es">
+  <head>
+    <Head title={category} description={category} isPost />
+  </head>
+  <Body>
+    <Header />
+    <main class="container mx-auto max-w-screen-xl">
+      <section class="grid lg:grid-cols-3 grid-cols-1 gap-8 my-10 px-6">
+        {
+          filterByCategory.map((post) => (
+            <Post url={post?.slug} {...post?.data} />
+          ))
+        }
+      </section>
+    </main>
+    <Footer />
+  </Body>
+</html>

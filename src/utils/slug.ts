@@ -8,3 +8,7 @@ export function slugify(text: string): string {
     .replace(/^-+/, "")
     .replace(/-+$/, "");
 }
+
+export const deslugify = (text: string): string => {
+  return text.toString().replace(/-/g, " ");
+};
