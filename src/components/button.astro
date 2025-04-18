@@ -1,0 +1,54 @@
+---
+import { cva, VariantProps } from "class-variance-authority";
+import { cn } from "../utils/style";
+
+const buttonStyles = cva(
+  [
+    "rounded-md",
+    "font-semibold",
+    "focus:outline-none",
+    "disabled:cursor-not-allowed",
+    "border-solid",
+    "border-transparent",
+    "border-2",
+    "transition-colors",
+    "duration-300",
+    "ease-in",
+    "inline-block",
+  ],
+  {
+    variants: {
+      variant: {
+        solid: "bg-[#12bc84] text-white",
+        destructive: "bg-[#fc943a] text-white",
+        outline: "border-[#12bc84] text-[#12bc84] bg-transparent",
+        link: "underline-offset-4 hover:underline text-[#12bc84]",
+      },
+      size: {
+        sm: "text-sm px-8 py-2",
+        md: "text-base px-12 py-2",
+        lg: "text-lg px-16 py-2",
+      },
+      spacing: {
+        sm: "mx-4",
+        md: "mx-6",
+        lg: "mx-8",
+      },
+      defaultVariants: {
+        variant: "solid",
+        size: "md",
+        spacing: "sm",
+      },
+    },
+  },
+);
+
+type Props = astroHTML.JSX.AnchorHTMLAttributes &
+  VariantProps<typeof buttonStyles>;
+
+const { variant, size, spacing, ...rest } = Astro.props;
+---
+
+<a {...rest} class={cn(buttonStyles({ variant, size, spacing }))}>
+  <slot />
+</a>
