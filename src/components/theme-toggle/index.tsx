@@ -42,7 +42,11 @@ const ThemeToggleButton = () => {
       className="theme-toggle flex items-center justify-center mr-2 text-gray-700 dark:text-gray-100 cursor-pointer"
       title="Toggle theme"
     >
-      <input type="checkbox" onChange={toggleTheme} />
+      <input
+        type="checkbox"
+        onChange={toggleTheme}
+        checked={theme === "dark"}
+      />
       <svg
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
