@@ -3,9 +3,11 @@ import tailwind from "@astrojs/tailwind";
 import addClasses from "rehype-add-classes";
 import react from "@astrojs/react";
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), react()],
+  integrations: [tailwind(), react(), sitemap()],
   site: "https://www.codeo.co/",
   markdown: {
     syntaxHighlight: "shiki",
