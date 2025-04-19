@@ -23,7 +23,7 @@ export const getTaxonomy = async (name: keyof Post["data"]) => {
 export const taxonomyFilter = (
   posts: Post[],
   name: keyof Post["data"],
-  key: any,
+  key: string,
 ) =>
   posts.filter((post) =>
     (post.data[name] as string[])
