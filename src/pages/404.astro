@@ -1,0 +1,40 @@
+---
+import Body from "../components/body.astro";
+import Head from "../components/head.astro";
+import Header from "../components/header.astro";
+import Footer from "../components/footer.astro";
+
+import { SITE_TITLE, SITE_DESCRIPTION } from "../constants";
+import Button from "../components/button.astro";
+
+import "../css/blog.css";
+---
+
+<html lang="es">
+  <head>
+    <Head title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <Body>
+    <Header />
+    <main class="container mx-auto max-w-screen-xl">
+      <div
+        class="space-y-6 max-w-md mx-auto flex flex-col items-center justify-center h-full px-4 text-center"
+      >
+        <h1
+          class="text-9xl font-extrabold tracking-tight text-primary font-montserrat"
+        >
+          404
+        </h1>
+        <h2 class="text-4xl font-bold tracking-tight font-montserrat">
+          Página no encontrada
+        </h2>
+        <p class="text-muted-foreground font-lato font-light text-xl">
+          Lo sentimos, no pudimos encontrar la página que buscas. Es posible que
+          se haya movido, eliminado o que nunca haya existido.
+        </p>
+        <Button variant="outline" size="sm" href="/">Volver al inicio</Button>
+      </div>
+    </main>
+  </Body>
+  <Footer />
+</html>
