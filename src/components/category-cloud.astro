@@ -1,0 +1,20 @@
+---
+import Tag from "../components/tag.astro";
+
+interface Props {
+  categories: { name: string; slug: string }[];
+}
+const { categories } = Astro.props;
+---
+
+<div class="flex flex-row flex-wrap gap-4 my-16 px-6">
+  {
+    categories.map((category) => (
+      <Tag
+        name={category.name}
+        route={`/categories/${category.slug}`}
+        size="lg"
+      />
+    ))
+  }
+</div>
