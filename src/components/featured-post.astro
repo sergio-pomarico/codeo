@@ -39,10 +39,7 @@ import { slugify } from "../utils/slug";
       <div class="flex items-center flex-row mb-8 px-0">
         {
           categories.map((category) => (
-            <Tag
-              category={category!}
-              route={`/categories/${slugify(category)}`}
-            />
+            <Tag name={category!} route={`/categories/${slugify(category)}`} />
           ))
         }
         <div class="flex items-center flex-row ml-4">

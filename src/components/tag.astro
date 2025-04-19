@@ -1,13 +1,47 @@
 ---
+import { cva, VariantProps } from "class-variance-authority";
+import { cn } from "../utils/style";
+
+const buttonStyles = cva(
+  [
+    "inline-block",
+    "border",
+    "border-gray-500",
+    "rounded-3xl",
+    "cursor-pointer",
+    "font-light",
+    "text-gray-600",
+    "dark:text-gray-400",
+    "dark:border-gray-400",
+    "transition",
+    "transform",
+    "hover:border-gray-800",
+    "hover:text-gray-800",
+    "ease-in-out",
+    "duration-300",
+    "hover:dark:border-gray-200",
+    "hover:dark:text-gray-200",
+  ],
+  {
+    variants: {
+      size: {
+        sm: "px-4 py-0.5 text-xs",
+        lg: "px-10 py-1 text-md",
+      },
+      defaultVariants: {
+        size: "sm",
+      },
+    },
+  },
+);
+
 interface Props {
-  category: string;
+  name: string;
   route: string;
+  size?: VariantProps<typeof buttonStyles>["size"];
 }
 
-const { category, route } = Astro.props;
+const { name, route, size = "sm" } = Astro.props;
 ---
 
-<a
-  class="inline-block px-4 py-0.5 border border-gray-500 rounded-3xl mr-0 cursor-pointer font-light text-gray-600 dark:text-gray-400 dark:border-gray-400 transition transform hover:border-gray-800 hover:text-gray-800 ease-in-out duration-300 hover:dark:border-gray-200 hover:dark:text-gray-200 text-xs"
-  href={route}>{category}</a
->
+<a class={cn(buttonStyles({ size }))} href={route}>{name}</a>
